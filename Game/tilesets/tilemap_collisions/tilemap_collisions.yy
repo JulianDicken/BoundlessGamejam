@@ -1,5 +1,4 @@
 {
-  "name": "tilemap_collisions",
   "spriteId": {
     "name": "spr_tilemap_test",
     "path": "sprites/spr_tilemap_test/spr_tilemap_test.yy",
@@ -17,8 +16,8 @@
   },
   "out_tilehborder": 2,
   "out_tilevborder": 2,
-  "out_columns": 1,
-  "tile_count": 2,
+  "out_columns": 2,
+  "tile_count": 4,
   "autoTileSets": [],
   "tileAnimationFrames": [],
   "tileAnimationSpeed": 15.0,
@@ -26,6 +25,8 @@
     "FrameData": [
       0,
       1,
+      2,
+      3,
     ],
     "SerialiseFrameCount": 1,
   },
@@ -39,6 +40,7 @@
     "path": "BoundlessGamejam.yyp",
   },
   "resourceVersion": "1.0",
+  "name": "tilemap_collisions",
   "tags": [],
   "resourceType": "GMTileSet",
 }

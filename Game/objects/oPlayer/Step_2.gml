@@ -8,6 +8,7 @@ repeat( velocity_iy ) {
 		velocity_x	= 0;
 		velocity_y	= 0;
 		grounded	= true;
+		canGrapple	= false;
 		break;
 	}
 }
@@ -19,14 +20,14 @@ repeat( velocity_ix ) {
 		if (grounded) {
 			velocity_x = 0;	
 		} else {
-			velocity_x *= -0.75;	
+			velocity_x	*= -0.75;	
 			draw_xscale *= -1;
 		}
 		break;
 	}
 }
 
-var dy = bbox_top + 1; repeat( abs(bbox_top - y) ) { dy--;
+var dy = bbox_top; repeat( abs(bbox_top - y) ) { dy++;
 	if (tilemap_meeting(x, dy)) { 
 		grounded = false;
 		velocity_y *= -0.5;

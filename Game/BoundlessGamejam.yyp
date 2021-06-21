@@ -1,12 +1,16 @@
 {
   "resources": [
-    {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":2,},
+    {"id":{"name":"tilemap_raycast","path":"scripts/tilemap_raycast/tilemap_raycast.yy",},"order":2,},
+    {"id":{"name":"spr_frog_idle","path":"sprites/spr_frog_idle/spr_frog_idle.yy",},"order":3,},
+    {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
     {"id":{"name":"tilemap_meeting","path":"scripts/tilemap_meeting/tilemap_meeting.yy",},"order":0,},
     {"id":{"name":"spr_tilemap_test","path":"sprites/spr_tilemap_test/spr_tilemap_test.yy",},"order":1,},
-    {"id":{"name":"spr_frog_idle","path":"sprites/spr_frog_idle/spr_frog_idle.yy",},"order":0,},
+    {"id":{"name":"spr_frog_charged","path":"sprites/spr_frog_charged/spr_frog_charged.yy",},"order":0,},
     {"id":{"name":"tilemap_collision","path":"scripts/tilemap_collision/tilemap_collision.yy",},"order":1,},
+    {"id":{"name":"oTongue","path":"objects/oTongue/oTongue.yy",},"order":1,},
     {"id":{"name":"spr_frog_jumping","path":"sprites/spr_frog_jumping/spr_frog_jumping.yy",},"order":2,},
     {"id":{"name":"tilemap_collisions","path":"tilesets/tilemap_collisions/tilemap_collisions.yy",},"order":4,},
+    {"id":{"name":"spr_tongue","path":"sprites/spr_tongue/spr_tongue.yy",},"order":4,},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":1,},
   ],
   "Options": [
@@ -29,6 +33,7 @@
     {"folderPath":"folders/Game.yy","order":3,"resourceVersion":"1.0","name":"Game","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game/Tiles.yy","order":1,"resourceVersion":"1.0","name":"Tiles","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game/Sprites.yy","order":2,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Player.yy","order":5,"resourceVersion":"1.0","name":"Player","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
