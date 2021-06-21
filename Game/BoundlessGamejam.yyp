@@ -1,6 +1,8 @@
 {
   "resources": [
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":2,},
+    {"id":{"name":"tilemap_meeting","path":"scripts/tilemap_meeting/tilemap_meeting.yy",},"order":0,},
+    {"id":{"name":"spr_frog","path":"sprites/spr_frog/spr_frog.yy",},"order":0,},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":1,},
   ],
   "Options": [
@@ -19,7 +21,11 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
   ],
-  "Folders": [],
+  "Folders": [
+    {"folderPath":"folders/Game.yy","order":3,"resourceVersion":"1.0","name":"Game","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game/Tiles.yy","order":1,"resourceVersion":"1.0","name":"Tiles","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game/Sprites.yy","order":2,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
+  ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],

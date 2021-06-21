@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_frog",
+    "path": "sprites/spr_frog/spr_frog.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
