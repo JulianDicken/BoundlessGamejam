@@ -2,7 +2,11 @@
   "resources": [
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":2,},
     {"id":{"name":"tilemap_meeting","path":"scripts/tilemap_meeting/tilemap_meeting.yy",},"order":0,},
-    {"id":{"name":"spr_frog","path":"sprites/spr_frog/spr_frog.yy",},"order":0,},
+    {"id":{"name":"spr_tilemap_test","path":"sprites/spr_tilemap_test/spr_tilemap_test.yy",},"order":1,},
+    {"id":{"name":"spr_frog_idle","path":"sprites/spr_frog_idle/spr_frog_idle.yy",},"order":0,},
+    {"id":{"name":"tilemap_collision","path":"scripts/tilemap_collision/tilemap_collision.yy",},"order":1,},
+    {"id":{"name":"spr_frog_jumping","path":"sprites/spr_frog_jumping/spr_frog_jumping.yy",},"order":2,},
+    {"id":{"name":"tilemap_collisions","path":"tilesets/tilemap_collisions/tilemap_collisions.yy",},"order":4,},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":1,},
   ],
   "Options": [
