@@ -10,7 +10,7 @@ max_a	= 35; //max angle
 grounded		= false;
 time_ground		= 0;
 time_air		= 0;
-accelleration_g = 0.4; //accelleration gravity
+accelleration_g = 0.45; //accelleration gravity
 
 charge			= 0;
 time_charge		= 0;

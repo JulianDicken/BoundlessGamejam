@@ -20,14 +20,16 @@ repeat( velocity_ix ) {
 			velocity_x = 0;	
 		} else {
 			velocity_x *= -0.75;	
+			draw_xscale *= -1;
 		}
 		break;
 	}
 }
 
-if (tilemap_meeting(x, bbox_top)) {
-	while( tilemap_meeting(x, bbox_top + 1) ) { y++; }
-	velocity_x *= 0.5;
-	velocity_y = 0;
-	grounded = false;
+var dy = bbox_top + 1; repeat( abs(bbox_top - y) ) { dy--;
+	if (tilemap_meeting(x, dy)) { 
+		grounded = false;
+		velocity_y *= -0.5;
+		y++; 
+	} 
 }

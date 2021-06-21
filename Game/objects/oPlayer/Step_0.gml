@@ -1,9 +1,9 @@
 if (grounded) {
 	if (input_pressed) {
-		charge = 0.2;	
+		charge = 0.4;	
 	}
 	if (input_held) {
-		charge += speed_charge * time_charge * 0.15;
+		charge += speed_charge * time_charge * 0.1;
 		charge = clamp(charge, 0, max_charge);
 		time_charge++;
 	}
