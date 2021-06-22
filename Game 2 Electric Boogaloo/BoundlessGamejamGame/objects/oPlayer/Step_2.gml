@@ -25,8 +25,28 @@ switch velocity_sign_y {
 	break;
 }
 
+repeat ( dy ) {
+	if (!is_colliding(x, y + velocity_sign_y)) {
+		y += velocity_sign_y;
+	} else {
+		switch state.get_current_state() {
+			case states.in_air:
+				state.change( states.grounded );
+			break;
+		}
+		while (is_colliding(x , y)) {
+			y += -velocity_sign_y;	
+		}
+		if (is_colliding(x, y + 1)) {
+			velocity_x = 0;	
+		}
+		velocity_y = 0;
+		break;
+	}
+}
+
 repeat ( dx ) {
-	if (!place_meeting(x + velocity_sign_x, y, parSolid)) {
+	if (!is_colliding(x + velocity_sign_x, y)) {
 		x += velocity_sign_x;	
 	} else {
 		switch state.get_current_state() {
@@ -38,22 +58,10 @@ repeat ( dx ) {
 			default : 
 				velocity_x = 0;
 			break;
+			while (is_colliding(x , y)) {
+				x += -velocity_sign_x;	
+			}
 		}
-		break;
-	}
-}
-
-repeat ( dy ) {
-	if (!place_meeting(x, y + velocity_sign_y, parSolid)) {
-		y += velocity_sign_y;
-	} else {
-		switch state.get_current_state() {
-			case states.in_air:
-				state.change( states.grounded );
-			break;
-		}
-		velocity_x = 0;
-		velocity_y = 0;
 		break;
 	}
 }

@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 15,
+  "bbox_right": 31,
   "bbox_top": 0,
-  "bbox_bottom": 15,
+  "bbox_bottom": 31,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 16,
-  "height": 16,
+  "width": 32,
+  "height": 32,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"4f3942de-b144-416b-83f5-a708408cae94","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4f3942de-b144-416b-83f5-a708408cae94","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"LayerId":{"name":"16242b52-ce0c-48f4-afc6-b74e58827a0e","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_mask_solid","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"resourceVersion":"1.0","name":"4f3942de-b144-416b-83f5-a708408cae94","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"4f3942de-b144-416b-83f5-a708408cae94","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"4f3942de-b144-416b-83f5-a708408cae94","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},"LayerId":{"name":"16242b52-ce0c-48f4-afc6-b74e58827a0e","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_ts_collisions","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},"resourceVersion":"1.0","name":"4f3942de-b144-416b-83f5-a708408cae94","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_mask_solid","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},
+    "spriteId": {"name":"spr_ts_collisions","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"3c57d069-f912-4167-a2d4-0d84b3275fad","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4f3942de-b144-416b-83f5-a708408cae94","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3c57d069-f912-4167-a2d4-0d84b3275fad","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4f3942de-b144-416b-83f5-a708408cae94","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,9 +58,9 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_mask_solid","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},
+    "parent": {"name":"spr_ts_collisions","path":"sprites/spr_ts_collisions/spr_ts_collisions.yy",},
     "resourceVersion": "1.3",
-    "name": "spr_mask_solid",
+    "name": "spr_ts_collisions",
     "tags": [],
     "resourceType": "GMSequence",
   },
@@ -73,7 +73,7 @@
     "path": "folders/Assets/Editor.yy",
   },
   "resourceVersion": "1.0",
-  "name": "spr_mask_solid",
+  "name": "spr_ts_collisions",
   "tags": [],
   "resourceType": "GMSprite",
 }

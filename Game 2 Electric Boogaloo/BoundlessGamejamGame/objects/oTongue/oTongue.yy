@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "spr_mask_solid",
-    "path": "sprites/spr_mask_solid/spr_mask_solid.yy",
+    "name": "spr_tongue",
+    "path": "sprites/spr_tongue/spr_tongue.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "parSolid",
-    "path": "objects/parSolid/parSolid.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -23,15 +20,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Solid",
-    "path": "folders/Objects/Colliders/Solid.yy",
+    "name": "Player",
+    "path": "folders/Objects/Player.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oSolid",
+  "name": "oTongue",
   "tags": [],
   "resourceType": "GMObject",
 }

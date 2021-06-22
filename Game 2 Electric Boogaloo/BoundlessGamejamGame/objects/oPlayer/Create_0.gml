@@ -30,7 +30,16 @@ charge_full_once	= false;
 charge_tap_time		= room_speed * 0.1; //x seconds
 charge_tap_angle	= 15;
 charge_normal_angle = 45;
-charge_full_angle	= 75;
+charge_full_angle	= 60;
+
+ray			= undefined;
+ray_length	= 96;
+target_x	= 0;
+target_y	= 0;
+
+can_grapple		= false;
+grapple_time	= 0;
+hangtime		= room_speed * 0.25;
 
 states = {
 	idle		: "idle",
@@ -49,7 +58,7 @@ state.add(
 			draw_angle		= 0;
 		},
 		step : function() {
-			if (!place_meeting(x, y + 1, parSolid)) {
+			if (!is_colliding(x, y + 1)) {
 				state.change( states.in_air );
 			}
 			if (input_pressed) {
@@ -93,6 +102,7 @@ state.add(
 	states.jumping, {
 		enter : function() {
 			sprite_index	= spr_frog_jumping;
+			can_grapple		= true;
 			
 			velocity_x		= velocity_jump_x * xscale_sign * charge;
 			velocity_y		= velocity_jump_y * charge;
@@ -113,21 +123,80 @@ state.add(
 				}
 			}
 		},
-		step  : function() {
-			velocity_y += accelleration_gravity
+		step : function() {
+			velocity_y += accelleration_gravity;
+			if (input_pressed) {
+				state.change( states.grappling );	
+			}
 		},
-		leave : function() {
-			
+		draw : function() {
+			switch velocity_sign_y {
+				case -1:
+					switch velocity_sign_x {
+						case -1:
+							draw_angle = -target_angle;
+						break;
+						case 1:
+							draw_angle = target_angle;
+						break;
+					}
+				break;
+				case  1:
+					switch velocity_sign_x {
+						case -1:
+							draw_angle = target_angle;
+						break;
+						case 1:
+							draw_angle = -target_angle;
+						break;
+					}
+				break;
+			}
 		}
 	}
 );
 state.add(
 	states.grounded, {
-		enter : function() {
+		enter : function() { 
 			draw_xscale		= 1.4 * xscale_sign;
 			draw_yscale		= 0.4;
 			
 			state.change( states.idle );
+		}
+	}
+);
+state.add(
+	states.grappling, {
+		enter : function() {
+			can_grapple		= false;
+			grapple_time	= 0;
+
+			target_x	= x + lengthdir_x(ray_length * velocity_sign_x, target_angle);
+			target_y	= y + lengthdir_y(ray_length * -velocity_sign_y,target_angle);
+			ray = raycast(x , y, target_x, target_y);
+			
+			if (!is_undefined(ray) && ray.tile == BOOST) {
+				velocity_x = 0;
+				velocity_y = 0;
+				
+				tongue = instance_create_depth(x, y, 0, oTongue)
+				tongue.image_angle	= draw_angle;
+				tongue.image_xscale = xscale_sign;
+				tongue.alarm[0]		= hangtime;
+			} else {
+				state.change( states.in_air, false );	
+			}
+		},
+		step : function() {
+			grapple_time++;
+			if (grapple_time >= hangtime) {
+				state.change( states.in_air );	
+			}
+		},
+		leave : function() {
+			VFX_FLASH
+			velocity_x = velocity_jump_x * xscale_sign;
+			velocity_y = velocity_jump_y;
 		}
 	}
 );
