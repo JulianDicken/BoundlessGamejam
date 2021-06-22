@@ -44,7 +44,6 @@ repeat ( dy ) {
 		break;
 	}
 }
-
 repeat ( dx ) {
 	if (!is_colliding(x + velocity_sign_x, y)) {
 		x += velocity_sign_x;	
@@ -58,13 +57,12 @@ repeat ( dx ) {
 			default : 
 				velocity_x = 0;
 			break;
-			while (is_colliding(x , y)) {
+			while (is_colliding(x, y)) {
 				x += -velocity_sign_x;	
 			}
 		}
 		break;
 	}
 }
-
 x = round(x);
 y = round(y);

@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Collision",
-    "path": "folders/Assets/Utility/Collision.yy",
+    "path": "folders/Objects/Collision.yy",
   },
   "resourceVersion": "1.0",
   "name": "is_colliding",

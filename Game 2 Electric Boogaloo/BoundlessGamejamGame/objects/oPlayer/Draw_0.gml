@@ -11,6 +11,3 @@ draw_sprite_ext(
 	draw_angle,
 	c_white, 1
 );
-draw_set_color(c_red);
-draw_line(x,y,target_x,target_y);
-draw_set_color(c_white);

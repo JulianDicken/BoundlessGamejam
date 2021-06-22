@@ -2,6 +2,8 @@ input = vk_space;
 
 velocity_x = 0;
 velocity_y = 0;
+last_velocity_x = 0;
+last_velocity_y = 0;
 velocity_sign_x = 0;
 velocity_sign_y = 0;
 velocity_jump_x = 4;
@@ -168,21 +170,27 @@ state.add(
 state.add(
 	states.grappling, {
 		enter : function() {
-			can_grapple		= false;
-			grapple_time	= 0;
+			if (can_grapple) {	
+				can_grapple		= false;
+				grapple_time	= 0;
 
-			target_x	= x + lengthdir_x(ray_length * velocity_sign_x, target_angle);
-			target_y	= y + lengthdir_y(ray_length * -velocity_sign_y,target_angle);
-			ray = raycast(x , y, target_x, target_y);
-			
-			if (!is_undefined(ray) && ray.tile == BOOST) {
-				velocity_x = 0;
-				velocity_y = 0;
+				target_x	= x + lengthdir_x(ray_length * velocity_sign_x, target_angle);
+				target_y	= y + lengthdir_y(ray_length * -velocity_sign_y,target_angle);
 				
-				tongue = instance_create_depth(x, y, 0, oTongue)
-				tongue.image_angle	= draw_angle;
-				tongue.image_xscale = xscale_sign;
-				tongue.alarm[0]		= hangtime;
+				//TODO Flies
+				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
+			
+				if (ray != noone) {
+					velocity_x = 0;
+					velocity_y = 0;
+				
+					tongue = instance_create_depth(x, y, 0, oTongue)
+					tongue.image_angle	= draw_angle;
+					tongue.image_xscale = xscale_sign;
+					tongue.alarm[0]		= hangtime;
+				} else {
+					state.change( states.in_air, false );	
+				}
 			} else {
 				state.change( states.in_air, false );	
 			}
