@@ -15,7 +15,7 @@ if (debug_mode) {
 		y + velocity_iy * 10 * sign(velocity_y),
 		c_blue, c_blue
 	);
-	draw_set_color(tilemap_meeting(x,y) ? c_red : c_white);
+	draw_set_color(is_colliding(x,y) ? c_red : c_white);
 	draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true)
 	draw_circle(x,y,1,false);
 	draw_set_color(c_red);

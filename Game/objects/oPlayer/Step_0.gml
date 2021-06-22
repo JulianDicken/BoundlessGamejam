@@ -1,6 +1,6 @@
 if (grounded) {
 	if (input_pressed) {
-		charge = 0.4;	
+		charge = 0.4;
 	}
 	if (input_held) {
 		charge += speed_charge * time_charge * mod_charge;
@@ -11,14 +11,22 @@ if (grounded) {
 		//do jump
 		velocity_y	= max_y * charge;
 		velocity_x	= max_x * charge * draw_xscale;
-		
+		if (time_charge <= room_speed * tap_time) {
+			max_a = start_angle;
+		} else {
+			if (charge < max_charge) {
+				max_a = mid_angle;
+			} else {
+				max_a = full_angle;
+			}
+		}
 		charge		= 0;
 		time_charge = 0;
 		grounded	= false;
 		last_charge = false;
 		canGrapple  = true;
 	}
-} else {
+} else {/*
 	if (input_pressed && canGrapple) {
 		lvelocity_x = velocity_x;
 		lvelocity_y = velocity_y;
@@ -28,32 +36,17 @@ if (grounded) {
 		canGrapple  = false;
 	
 		tongue = instance_create_depth(x, y, 0, oTongue);
-		tongue.image_angle	= draw_angle;
+		tongue.image_angle	= target_angle;
 		tongue.image_xscale = target_xscale;
 	}
 	if (isGrappling) {
 		time_grapple++;	
 		if (time_grapple == max_grapple) {
 			//do grapple action
-			rx = x + lengthdir_x(length_tongue * sign(draw_xscale), draw_angle);
-			ry = y + lengthdir_y(length_tongue * sign(draw_xscale), draw_angle);
+			rx = x + lengthdir_x(length_tongue * sign(draw_xscale), target_angle);
+			ry = y + lengthdir_y(length_tongue * sign(draw_xscale), target_angle);
 			ray = tilemap_raycast(x, y, rx, ry, length_tongue);
-			/*
-			if (ray != noone) {
-				var dx = ray.X - x; var dy = ray.Y - y;
-				if (sign(dx) == 1) {
-					x = ray.X - (bbox_right - x);	
-				} 
-				if (sign(dx) == -1) {
-					x = ray.X - (bbox_left - x);	
-				}
-				if (sign(dy) == 1) {
-					y = ray.Y - (bbox_bottom - y);	
-				} 
-				if (sign(dy) == -1) {
-					y = ray.Y - (bbox_top - y);	
-				}
-			}*/
+
 			if (ray != noone) {
 				var dir = point_direction(x,y, ray.X, ray.Y);
 				lvelocity_x = lengthdir_x(-max_y, dir);	
@@ -67,7 +60,7 @@ if (grounded) {
 			isGrappling		= false;
 			time_grapple	= 0;
 		}
-	} else {
+	} else {*/
 		velocity_y += accelleration_g;		
-	}
+	//}
 }
