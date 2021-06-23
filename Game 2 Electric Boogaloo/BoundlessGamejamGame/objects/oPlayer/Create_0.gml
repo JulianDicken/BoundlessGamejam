@@ -29,7 +29,7 @@ charge_max			= 1;
 charge_speed		= 0.05;
 charge_time			= 0;
 charge_full_once	= false;
-charge_tap_time		= room_speed * 0.1; //x seconds
+charge_tap_time		= room_speed * 0.15; //x seconds
 charge_tap_angle	= 15;
 charge_normal_angle = 45;
 charge_full_angle	= 60;
@@ -201,15 +201,16 @@ state.add(
 				
 				//TODO Flies
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
-			
+				
+				tongue = instance_create_depth(x, y, depth + 1, oTongue)
+				tongue.image_angle	= transformed_angle;
+				tongue.image_xscale = xscale_sign;
+				tongue.max_length	= ray_length;
+				tongue.target		= id;
+				
 				if (ray != noone) {
 					velocity_x = 0;
 					velocity_y = 0;
-				
-					tongue = instance_create_depth(x, y, depth + 1, oTongue)
-					tongue.image_angle	= transformed_angle;
-					tongue.image_xscale = xscale_sign;
-					tongue.alarm[0]		= hangtime;
 				} else {
 					state.change( states.in_air, false );	
 				}

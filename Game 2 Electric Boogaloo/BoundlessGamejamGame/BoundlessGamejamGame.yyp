@@ -5,7 +5,7 @@
     {"id":{"name":"__snowstate_config","path":"scripts/__snowstate_config/__snowstate_config.yy",},"order":0,},
     {"id":{"name":"sfx_croak","path":"sounds/sfx_croak/sfx_croak.yy",},"order":1,},
     {"id":{"name":"spr_frog_idle","path":"sprites/spr_frog_idle/spr_frog_idle.yy",},"order":0,},
-    {"id":{"name":"spr_tongue","path":"sprites/spr_tongue/spr_tongue.yy",},"order":4,},
+    {"id":{"name":"spr_tongue_9slice","path":"sprites/spr_tongue_9slice/spr_tongue_9slice.yy",},"order":4,},
     {"id":{"name":"oTongue","path":"objects/oTongue/oTongue.yy",},"order":1,},
     {"id":{"name":"sfx_catch_fly","path":"sounds/sfx_catch_fly/sfx_catch_fly.yy",},"order":6,},
     {"id":{"name":"ts_dirt","path":"tilesets/ts_dirt/ts_dirt.yy",},"order":1,},
