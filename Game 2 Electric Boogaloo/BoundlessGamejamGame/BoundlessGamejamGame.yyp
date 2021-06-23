@@ -13,6 +13,7 @@
     {"id":{"name":"spr_mask_solid","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"order":0,},
     {"id":{"name":"frog","path":"sprites/frog/frog.yy",},"order":2,},
     {"id":{"name":"sfx_land","path":"sounds/sfx_land/sfx_land.yy",},"order":3,},
+    {"id":{"name":"oText","path":"objects/oText/oText.yy",},"order":3,},
     {"id":{"name":"parSolid","path":"objects/parSolid/parSolid.yy",},"order":0,},
     {"id":{"name":"oFlash","path":"objects/oFlash/oFlash.yy",},"order":0,},
     {"id":{"name":"oFly","path":"objects/oFly/oFly.yy",},"order":0,},

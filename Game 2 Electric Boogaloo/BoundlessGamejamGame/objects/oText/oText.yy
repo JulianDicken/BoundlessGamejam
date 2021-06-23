@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_tongue_9slice",
-    "path": "sprites/spr_tongue_9slice/spr_tongue_9slice.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -21,16 +18,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Player",
-    "path": "folders/Objects/Player.yy",
+    "name": "Blockout",
+    "path": "folders/Objects/Collision/Blockout.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oTongue",
+  "name": "oText",
   "tags": [],
   "resourceType": "GMObject",
 }

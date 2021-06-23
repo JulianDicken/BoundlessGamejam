@@ -205,14 +205,14 @@ state.add(
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
 				tongue.image_angle	= transformed_angle;
 				tongue.image_xscale = xscale_sign;
-				tongue.max_length	= ray_length;
-				tongue.target		= id;
 				
 				if (ray != noone) {
 					velocity_x = 0;
 					velocity_y = 0;
+					tongue.alarm[0] = hangtime;
 				} else {
 					state.change( states.in_air, false );	
+					tongue.alarm[0] = 2;
 				}
 				
 				if (!audio_is_playing(sfx_tongue)) {
@@ -226,7 +226,7 @@ state.add(
 		step : function() {
 			grapple_time++;
 			if (grapple_time >= hangtime) {
-				state.change( states.in_air );	
+				state.change( states.in_air );
 			}
 		},
 		leave : function() {
