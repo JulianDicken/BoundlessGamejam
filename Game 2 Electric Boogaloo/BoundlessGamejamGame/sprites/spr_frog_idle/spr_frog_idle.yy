@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Assets/Sprites.yy",
+    "name": "Frog",
+    "path": "folders/Assets/Sprites/Frog.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_frog_idle",

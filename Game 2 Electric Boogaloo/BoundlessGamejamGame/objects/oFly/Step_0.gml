@@ -1,1 +1,0 @@
-y = (8 * sin(current_time * 0.01)) + ay;

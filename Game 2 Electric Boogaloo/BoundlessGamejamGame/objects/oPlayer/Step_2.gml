@@ -53,6 +53,10 @@ repeat ( dx ) {
 				velocity_x		*= -1;
 				target_xscale	*= -1;
 				draw_xscale		*= -1;
+				if (!audio_is_playing(sfx_collision)) {
+					audio_sound_pitch(sfx_collision, random_range(0.8, 1.2))
+					audio_play_sound(sfx_collision, 1, false);
+				}
 			break;
 			default : 
 				velocity_x = 0;
