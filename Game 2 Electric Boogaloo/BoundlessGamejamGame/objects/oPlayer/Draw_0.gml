@@ -17,3 +17,5 @@ draw_line(x,y,
 	x + (velocity_sign_x *  lengthdir_x(ray_length, abs(transformed_angle))),
 	y + (-velocity_sign_y * lengthdir_y(ray_length, abs(transformed_angle)))
 );
+
+draw_bbox()

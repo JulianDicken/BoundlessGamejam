@@ -10,8 +10,7 @@ last_velocity_x = 0;
 last_velocity_y = 0;
 velocity_sign_x = 0;
 velocity_sign_y = 0;
-velocity_jump_x = 4;
-velocity_jump_y = -8;
+velocity_grapple = 4; 
 velocity_jump = 6.5;
 accelleration_gravity = 0.2;
 
@@ -53,9 +52,13 @@ states = {
 	in_air		: "in_air",
 	grounded	: "grounded",
 	grappling	: "grappling",
+	fly_hit		: "fly_hit"
 }
 
 state = new SnowState(states.in_air);
+state.history_enable();
+state.set_history_max_size( 24 );
+
 state.add( 
 	states.idle, {
 		enter : function() {
@@ -199,37 +202,48 @@ state.add(
 				can_grapple		= false;
 				grapple_time	= 0;
 				
-				target_x = x + (velocity_sign_x *  lengthdir_x(ray_length, abs(transformed_angle)));
+				target_x = x + (velocity_sign_x  * lengthdir_x(ray_length, abs(transformed_angle)));
 				target_y = y + (-velocity_sign_y * lengthdir_y(ray_length, abs(transformed_angle)));
 				
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
 				
 				if (ray == noone) {
-					state.change( states.in_air, false );
+					state.change( states.in_air );
+				} else {
+					var dir = point_direction(x,y,target_x, target_y);
+					var dx  =  lengthdir_x(velocity_grapple, dir);
+					var dy  = lengthdir_y(velocity_grapple, dir);
+					velocity_x = dx;
+					velocity_y = dy;	
 				}
 			} else {
-				state.change( states.in_air, false );
+				state.change( states.in_air );
 			}
 				
 		},
 		step : function() {
 			grapple_time++;
 			if (grapple_time >= hangtime) {
-				state.change( states.in_air );
+				VFX_FLASH
+				ray.draw_xscale = 1.8 * ray.target_xscale;
+				ray.draw_yscale = 0.3;
+				if (!audio_is_playing(sfx_catch_fly)) {
+					audio_sound_pitch(sfx_catch_fly, random_range(0.9, 1.1))
+					audio_play_sound(sfx_catch_fly, 1, false);
+				}
+				state.change( states.fly_hit );
 			}
-		},
-		leave : function() {
-			VFX_FLASH
-			if (!audio_is_playing(sfx_catch_fly)) {
-				audio_sound_pitch(sfx_catch_fly, random_range(0.9, 1.1))
-				audio_play_sound(sfx_catch_fly, 1, false);
-			}
-			
-			
-			
-			velocity_x = target_x - x;
-			velocity_y = -(target_y - y);
+		}
+	}
+);
+
+state.add( 
+	states.fly_hit, {
+		enter : function() {
+			charge = 1;
+			charge_time = charge_max;
+			state.change( states.jumping );
 		}
 	}
 );

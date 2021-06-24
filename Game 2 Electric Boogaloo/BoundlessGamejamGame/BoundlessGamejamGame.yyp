@@ -17,7 +17,6 @@
     {"id":{"name":"spr_tongue_fred","path":"sprites/spr_tongue_fred/spr_tongue_fred.yy",},"order":5,},
     {"id":{"name":"frog","path":"sprites/frog/frog.yy",},"order":2,},
     {"id":{"name":"sfx_land","path":"sounds/sfx_land/sfx_land.yy",},"order":3,},
-    {"id":{"name":"oText","path":"objects/oText/oText.yy",},"order":3,},
     {"id":{"name":"parSolid","path":"objects/parSolid/parSolid.yy",},"order":0,},
     {"id":{"name":"oFlash","path":"objects/oFlash/oFlash.yy",},"order":0,},
     {"id":{"name":"spr_background_1","path":"sprites/spr_background_1/spr_background_1.yy",},"order":0,},

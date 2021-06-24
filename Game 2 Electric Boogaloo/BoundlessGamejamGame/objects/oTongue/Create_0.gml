@@ -2,8 +2,8 @@
 // You can write your code in this editor
 
 tongue_distance = 0;
-tongue_max = 40;
-tongue_speed = 15;
+tongue_max = 96;
+tongue_speed = 16;
 
 states = { 
 	out		: "out",
