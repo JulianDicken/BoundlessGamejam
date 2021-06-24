@@ -11,7 +11,7 @@ last_velocity_y = 0;
 velocity_sign_x = 0;
 velocity_sign_y = 0;
 velocity_grapple = 4; 
-velocity_jump = 6.5;
+velocity_jump = 7;
 accelleration_gravity = 0.2;
 
 draw_xscale		= 1;
@@ -40,6 +40,7 @@ ray			= undefined;
 ray_length	= 96;
 target_x	= 0;
 target_y	= 0;
+tongue		= noone;
 
 can_grapple		= false;
 grapple_time	= 0;
@@ -56,9 +57,6 @@ states = {
 }
 
 state = new SnowState(states.in_air);
-state.history_enable();
-state.set_history_max_size( 24 );
-
 state.add( 
 	states.idle, {
 		enter : function() {
@@ -207,15 +205,18 @@ state.add(
 				
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
-				
+				tongue.image_angle = transformed_angle;
 				if (ray == noone) {
 					state.change( states.in_air );
+					tongue.target_x = target_x;
+					tongue.target_y = target_y;
+					tongue.tongue_speed *= 2;
 				} else {
 					var dir = point_direction(x,y,target_x, target_y);
-					var dx  =  lengthdir_x(velocity_grapple, dir);
-					var dy  = lengthdir_y(velocity_grapple, dir);
-					velocity_x = dx;
-					velocity_y = dy;	
+					velocity_x = lengthdir_x(velocity_grapple, dir);
+					velocity_y = lengthdir_y(velocity_grapple, dir);
+					tongue.target_x = ray.x;
+					tongue.target_y = ray.y;
 				}
 			} else {
 				state.change( states.in_air );

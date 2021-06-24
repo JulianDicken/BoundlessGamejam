@@ -1,0 +1,1 @@
+draw_text(8,8, state.get_current_state())

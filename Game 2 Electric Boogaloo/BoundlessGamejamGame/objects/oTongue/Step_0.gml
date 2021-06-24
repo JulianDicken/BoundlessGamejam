@@ -1,9 +1,10 @@
-/// @description Action processing
+x = oPlayer.x;
+y = oPlayer.y;
+target_dist = point_distance(x, y, target_x, target_y);
+target_dir  = point_direction(x, y, target_x, target_y);
+tongue_x	= x + lengthdir_x(tongue_length, target_dir);
+tongue_y	= y + lengthdir_y(tongue_length, target_dir);
+
 if (state.event_exists( "step" ) ) {
 	state.step();	
 }
-
-tongue_distance = clamp(tongue_distance, 0, tongue_max);
-
-target_x = oPlayer.x + (oPlayer.velocity_sign_x *  lengthdir_x(tongue_distance, abs(oPlayer.transformed_angle)));
-target_y = oPlayer.y + (-oPlayer.velocity_sign_y * lengthdir_y(tongue_distance, abs(oPlayer.transformed_angle)));

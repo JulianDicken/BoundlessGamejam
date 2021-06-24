@@ -1,64 +1,69 @@
-/// @description Insert description here
-// You can write your code in this editor
+target_x = 0;
+target_y = 0;
+target_dist = 0;
+target_dir	= 0;
+target_sign_dx = sign(target_x - x);
+target_sign_dy = sign(target_y - y);
 
-tongue_distance = 0;
-tongue_max = 96;
-tongue_speed = 16;
+tongue_length = 0;
+tongue_speed  = 16;
+tongue_max_length = 96;
+tongue_x = x;
+tongue_y = y;
 
-states = { 
-	out		: "out",
+states = {
 	in		: "in",
-	hooked	: "hooked"
+	out		: "out",
+	hooked	: "hooked",
 }
 
-target_x = oPlayer.x + (oPlayer.velocity_sign_x *  lengthdir_x(tongue_distance, abs(oPlayer.transformed_angle)));
-target_y = oPlayer.y + (-oPlayer.velocity_sign_y * lengthdir_y(tongue_distance, abs(oPlayer.transformed_angle)));
-
 state = new SnowState(states.out);
+
 state.add( 
 	states.out, {
-		enter : function() {
-			
-		},
 		step : function() {
-			tongue_distance += tongue_speed;
-			
-			if (instance_place(target_x, target_y, oFly) != noone){
+			if (place_meeting(tongue_x, tongue_y, parBoost)) {
 				state.change( states.hooked );
-			} else if (tongue_distance >= tongue_max){
-				state.change( states.in );
+				return;	
 			}
+			if (tongue_length >= tongue_max_length) {
+				state.change( states.in );	
+				return;
+			}
+			tongue_length += tongue_speed;
+			tongue_length = clamp(tongue_length,0,tongue_max_length);
 		}
-	} 
-); 
+	}
+);
 
 state.add( 
 	states.in, {
-		enter : function() {
-			
-		},
 		step : function() {
-			tongue_distance -= tongue_speed;
-			
-			if (instance_place(target_x, target_y, oFly) != noone){
-				state.change( states.hooked );
-			} else if (tongue_distance <= 0){
+			if (tongue_length <= tongue_speed) {
 				instance_destroy();
 			}
+			tongue_length -= tongue_speed;
 		}
-	} 
-); 
+	}
+);
 
 state.add( 
 	states.hooked, {
-		enter : function() {
-			
-		},
 		step : function() {
-			if point_distance(target_x, target_y, oPlayer.x, oPlayer.y) <= 2{
+			if (sign(target_x - x) != target_sign_dx) {
+				state.change( states.in );
+				return;
+			}
+			if (sign(target_y - y) != target_sign_dy) {
+				state.change( states.in );	
+				return;
+			}
+			if (target_dist >= tongue_max_length) {
 				instance_destroy();
 			}
+			
+			target_sign_dx = sign(target_x - x);
+			target_sign_dy = sign(target_y - y);
 		}
-	} 
-); 
-
+	}
+);
