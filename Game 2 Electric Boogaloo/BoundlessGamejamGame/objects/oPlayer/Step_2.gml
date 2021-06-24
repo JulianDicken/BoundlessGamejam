@@ -50,7 +50,7 @@ repeat ( dx ) {
 	} else {
 		switch state.get_current_state() {
 			case states.in_air:
-				velocity_x		*= -1;
+				velocity_x		*= -0.75;
 				target_xscale	*= -1;
 				draw_xscale		*= -1;
 				if (!audio_is_playing(sfx_collision)) {

@@ -8,9 +8,8 @@ function is_colliding(_x, _y) {
 		return true;	
 	}
 	
-	var inst = instance_place(_x, _y, parOneway);
-	if (inst != noone) {
-		if (velocity_sign_y == -1) { return false; }
-		return bbox_bottom + 1 >= inst.bbox_top
-	}
+	if (velocity_sign_y == -1) { return false; }
+		
+	return place_meeting(_x, _y+1, parOneway) && !place_meeting(_x, _y, parOneway)
+	
 }

@@ -1,6 +1,8 @@
 #macro TO_ANGLE (180 / 3.1415)
 
+
 input = vk_space;
+instance_create_depth(x,y,depth, oCamera)
 
 velocity_x = 0;
 velocity_y = 0;
@@ -196,15 +198,13 @@ state.add(
 				can_grapple		= false;
 				grapple_time	= 0;
 				
-				target_x	= x + lengthdir_x(ray_length * velocity_sign_x, target_angle);
-				target_y	= y + lengthdir_y(ray_length * -velocity_sign_y,target_angle);
+				target_x = x + (velocity_sign_x *  lengthdir_x(ray_length, abs(transformed_angle)));
+				target_y = y + (-velocity_sign_y * lengthdir_y(ray_length, abs(transformed_angle)));
 				
-				//TODO Flies
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
 				
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
-				tongue.image_angle	= transformed_angle;
-				tongue.image_xscale = xscale_sign;
+				tongue.image_angle	= point_direction(x,y,target_x, target_y);
 				
 				if (ray != noone) {
 					velocity_x = 0;
@@ -238,7 +238,7 @@ state.add(
 			ray.draw_xscale = 1.8 * target_yscale;
 			ray.draw_yscale = 0.3;
 			
-			velocity_x = velocity_jump_x * xscale_sign;
+			velocity_x = -velocity_jump_y * xscale_sign;
 			velocity_y = velocity_jump_y;
 		}
 	}
