@@ -32,9 +32,9 @@ charge_speed		= 0.03;
 charge_time			= 0;
 charge_full_once	= false;
 charge_tap_time		= room_speed * 0.15; //x seconds
-charge_tap_angle	= 80;
-charge_normal_angle = 60;
-charge_full_angle	= 75;
+charge_tap_angle	= 60;
+charge_normal_angle = 40;
+charge_full_angle	= 80;
 
 ray			= undefined;
 ray_length	= 96;
