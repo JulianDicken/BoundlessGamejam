@@ -4,4 +4,4 @@ target = oPlayer;
 
 view_dist = 48;
 
-follow_speed = 0.06;
+follow_speed = 0.16;
