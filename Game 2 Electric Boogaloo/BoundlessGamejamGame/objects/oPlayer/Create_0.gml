@@ -147,6 +147,7 @@ state.add(
 state.add(
 	states.in_air, {
 		enter : function() {
+			
 			if (charge_time < charge_tap_time) {
 				target_angle = charge_tap_angle;	
 			} else {
@@ -155,6 +156,7 @@ state.add(
 					target_angle = charge_full_angle;
 				}
 			}
+			
 		},
 		step : function() {
 			velocity_y += accelleration_gravity;
@@ -201,10 +203,13 @@ state.add(
 				target_y = y + (-velocity_sign_y * lengthdir_y(ray_length, abs(transformed_angle)));
 				
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
-				
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
+				
+				if (ray == noone) {
+					state.change( states.in_air, false );
+				}
 			} else {
-				state.change( states.in_air );
+				state.change( states.in_air, false );
 			}
 				
 		},
@@ -221,8 +226,10 @@ state.add(
 				audio_play_sound(sfx_catch_fly, 1, false);
 			}
 			
-			velocity_x = -velocity_jump_y * xscale_sign;
-			velocity_y = velocity_jump_y;
+			
+			
+			velocity_x = target_x - x;
+			velocity_y = -(target_y - y);
 		}
 	}
 );
