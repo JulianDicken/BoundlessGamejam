@@ -14,6 +14,7 @@
     {"id":{"name":"ts_dirt","path":"tilesets/ts_dirt/ts_dirt.yy",},"order":1,},
     {"id":{"name":"spr_ts_dirt","path":"sprites/spr_ts_dirt/spr_ts_dirt.yy",},"order":0,},
     {"id":{"name":"spr_mask_solid","path":"sprites/spr_mask_solid/spr_mask_solid.yy",},"order":0,},
+    {"id":{"name":"spr_tongue_fred","path":"sprites/spr_tongue_fred/spr_tongue_fred.yy",},"order":5,},
     {"id":{"name":"frog","path":"sprites/frog/frog.yy",},"order":2,},
     {"id":{"name":"sfx_land","path":"sounds/sfx_land/sfx_land.yy",},"order":3,},
     {"id":{"name":"oText","path":"objects/oText/oText.yy",},"order":3,},

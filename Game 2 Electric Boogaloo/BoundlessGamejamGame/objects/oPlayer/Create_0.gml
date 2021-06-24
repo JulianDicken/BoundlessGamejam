@@ -12,7 +12,8 @@ velocity_sign_x = 0;
 velocity_sign_y = 0;
 velocity_jump_x = 4;
 velocity_jump_y = -8;
-accelleration_gravity = 0.3;
+velocity_jump = 6.5;
+accelleration_gravity = 0.2;
 
 draw_xscale		= 1;
 draw_yscale		= 1;
@@ -28,13 +29,13 @@ target_angle	= 0;
 
 charge				= 0;
 charge_max			= 1;
-charge_speed		= 0.05;
+charge_speed		= 0.03;
 charge_time			= 0;
 charge_full_once	= false;
 charge_tap_time		= room_speed * 0.15; //x seconds
-charge_tap_angle	= 15;
-charge_normal_angle = 45;
-charge_full_angle	= 60;
+charge_tap_angle	= 80;
+charge_normal_angle = 60;
+charge_full_angle	= 75;
 
 ray			= undefined;
 ray_length	= 96;
@@ -119,8 +120,20 @@ state.add(
 			sprite_index	= spr_frog_jumping;
 			can_grapple		= true;
 			
-			velocity_x		= velocity_jump_x * xscale_sign * charge;
-			velocity_y		= velocity_jump_y * charge;
+			if (charge_time < charge_tap_time) {
+				target_angle = charge_tap_angle;	
+			} else {
+				target_angle = charge_normal_angle;
+				if (charge == charge_max) {
+					target_angle = charge_full_angle;
+				}
+			}
+			
+			var _xmultiplier = abs(dcos(target_angle));
+			var _ymultiplier = abs(dsin(target_angle));
+			
+			velocity_x		= velocity_jump * _xmultiplier * xscale_sign * charge;
+			velocity_y		= -velocity_jump * _ymultiplier * charge;
 			
 			if (!audio_is_playing(sfx_jump)) {
 				audio_sound_pitch(sfx_jump, 0.7 + (charge * 0.5))
@@ -150,26 +163,12 @@ state.add(
 			}
 		},
 		draw : function() {
-			switch velocity_sign_y {
+			switch velocity_sign_x {
 				case -1:
-					switch velocity_sign_x {
-						case -1:
-							transformed_angle = -target_angle;
-						break;
-						case 1:
-							transformed_angle = target_angle;
-						break;
-					}
+					transformed_angle = TO_ANGLE * arctan(velocity_y);
 				break;
-				case  1:
-					switch velocity_sign_x {
-						case -1:
-							transformed_angle = TO_ANGLE * arctan(velocity_y);
-						break;
-						case 1:
-							transformed_angle = TO_ANGLE * -arctan(velocity_y);
-						break;
-					}
+				case 1:
+					transformed_angle = TO_ANGLE * -arctan(velocity_y);
 				break;
 			}
 		}
@@ -204,24 +203,10 @@ state.add(
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
 				
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
-				tongue.image_angle	= point_direction(x,y,target_x, target_y);
-				
-				if (ray != noone) {
-					velocity_x = 0;
-					velocity_y = 0;
-					tongue.alarm[0] = hangtime;
-				} else {
-					state.change( states.in_air, false );	
-					tongue.alarm[0] = 2;
-				}
-				
-				if (!audio_is_playing(sfx_tongue)) {
-					audio_sound_pitch(sfx_tongue, random_range(0.8, 1.2))
-					audio_play_sound(sfx_tongue, 1, false);
-				}
 			} else {
-				state.change( states.in_air, false );	
+				state.change( states.in_air );
 			}
+				
 		},
 		step : function() {
 			grapple_time++;
@@ -235,8 +220,6 @@ state.add(
 				audio_sound_pitch(sfx_catch_fly, random_range(0.9, 1.1))
 				audio_play_sound(sfx_catch_fly, 1, false);
 			}
-			ray.draw_xscale = 1.8 * target_yscale;
-			ray.draw_yscale = 0.3;
 			
 			velocity_x = -velocity_jump_y * xscale_sign;
 			velocity_y = velocity_jump_y;
