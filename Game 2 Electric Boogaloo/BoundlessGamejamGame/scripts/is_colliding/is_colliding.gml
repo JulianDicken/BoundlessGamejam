@@ -1,6 +1,6 @@
 function is_colliding(_x, _y) {
 	
-	if (_x < 0 || _x > room_width || _y < 0 || _y > room_height) {
+	if (_x < 32 || _x > room_width - 32 || _y < 0 || _y > room_height) {
 		return true;	
 	}
 	

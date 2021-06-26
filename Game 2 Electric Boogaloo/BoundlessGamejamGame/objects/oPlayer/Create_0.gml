@@ -1,8 +1,10 @@
 #macro TO_ANGLE (180 / 3.1415)
 
-
 input = vk_space;
-instance_create_depth(x,y,depth, oCamera)
+camera = instance_create_depth(x,y,depth, oCamera)
+camera.target = id;
+
+time = new Timer();
 
 velocity_x = 0;
 velocity_y = 0;
@@ -11,7 +13,7 @@ last_velocity_y = 0;
 velocity_sign_x = 0;
 velocity_sign_y = 0;
 velocity_grapple = 4; 
-velocity_jump = 7;
+velocity_jump = 6;
 accelleration_gravity = 0.2;
 
 draw_xscale		= 1;
@@ -32,8 +34,8 @@ charge_speed		= 0.03;
 charge_time			= 0;
 charge_full_once	= false;
 charge_tap_time		= room_speed * 0.15; //x seconds
-charge_tap_angle	= 60;
-charge_normal_angle = 40;
+charge_tap_angle	= 75;
+charge_normal_angle = 60;
 charge_full_angle	= 80;
 
 ray			= undefined;
@@ -118,7 +120,6 @@ state.add(
 state.add(
 	states.jumping, {
 		enter : function() {
-			sprite_index	= spr_frog_jumping;
 			can_grapple		= true;
 			
 			if (charge_time < charge_tap_time) {
@@ -148,7 +149,7 @@ state.add(
 state.add(
 	states.in_air, {
 		enter : function() {
-			
+			sprite_index = spr_frog_midair;
 			if (charge_time < charge_tap_time) {
 				target_angle = charge_tap_angle;	
 			} else {
@@ -205,12 +206,13 @@ state.add(
 				
 				ray = collision_line(x , y, target_x, target_y, parBoost, false, true);
 				tongue = instance_create_depth(x, y, depth + 1, oTongue)
+				tongue.target = id;
 				tongue.image_angle = transformed_angle;
-				if (ray == noone) {
+				if (ray == noone || !ray.state.state_is( ray.states.alive )) {
 					state.change( states.in_air );
 					tongue.target_x = target_x;
 					tongue.target_y = target_y;
-					tongue.tongue_speed *= 2;
+					tongue.tongue_speed *= 2;	
 				} else {
 					var dir = point_direction(x,y,target_x, target_y);
 					velocity_x = lengthdir_x(velocity_grapple, dir);
@@ -227,13 +229,12 @@ state.add(
 			grapple_time++;
 			if (grapple_time >= hangtime) {
 				VFX_FLASH
-				ray.draw_xscale = 1.8 * ray.target_xscale;
-				ray.draw_yscale = 0.3;
 				if (!audio_is_playing(sfx_catch_fly)) {
 					audio_sound_pitch(sfx_catch_fly, random_range(0.9, 1.1))
 					audio_play_sound(sfx_catch_fly, 1, false);
 				}
 				state.change( states.fly_hit );
+				ray.state.change( ray.states.dead );
 			}
 		}
 	}

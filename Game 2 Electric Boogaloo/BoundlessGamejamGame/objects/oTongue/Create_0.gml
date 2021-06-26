@@ -10,6 +10,7 @@ tongue_speed  = 16;
 tongue_max_length = 96;
 tongue_x = x;
 tongue_y = y;
+target = noone;
 
 states = {
 	in		: "in",

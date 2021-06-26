@@ -8,3 +8,4 @@ var _camy = camera_get_view_y(view_camera[0])
 draw_sprite_tiled(spr_background_3, 0, -1000 +  _camx * _offset_1, -1000 + _camy * _offset_1);
 draw_sprite_tiled(spr_background_1, 0, -1000 +  _camx * _offset_2, -1000 + _camy * _offset_2);
 draw_sprite_tiled(spr_background_2, 0, -1000 +  _camx * _offset_3, -1000 + _camy * _offset_3);
+draw_sprite_tiled(spr_wooden_border, 0, 0, 0);
