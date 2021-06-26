@@ -1,5 +1,5 @@
 with (oLogo) {
-	if (fade == 0 && transitioning) {
+	if (fade == 0 && transitioning && other.pressed) {
 		global.do_load = true;
 		room_goto(rm_main);	
 	}	

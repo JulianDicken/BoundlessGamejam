@@ -19,6 +19,7 @@
     {"id":{"name":"sfx_croak","path":"sounds/sfx_croak/sfx_croak.yy",},"order":1,},
     {"id":{"name":"Parser","path":"scripts/Parser/Parser.yy",},"order":0,},
     {"id":{"name":"array_swap","path":"scripts/array_swap/array_swap.yy",},"order":10,},
+    {"id":{"name":"press_start_2_play","path":"fonts/press_start_2_play/press_start_2_play.yy",},"order":0,},
     {"id":{"name":"ArrayList","path":"scripts/ArrayList/ArrayList.yy",},"order":0,},
     {"id":{"name":"spr_frog_idle","path":"sprites/spr_frog_idle/spr_frog_idle.yy",},"order":0,},
     {"id":{"name":"snap_to_xml","path":"scripts/snap_to_xml/snap_to_xml.yy",},"order":1,},
@@ -68,6 +69,7 @@
     {"id":{"name":"__Error__","path":"scripts/__Error__/__Error__.yy",},"order":0,},
     {"id":{"name":"oFly","path":"objects/oFly/oFly.yy",},"order":0,},
     {"id":{"name":"spr_button_load","path":"sprites/spr_button_load/spr_button_load.yy",},"order":4,},
+    {"id":{"name":"save_file","path":"scripts/save_file/save_file.yy",},"order":4,},
     {"id":{"name":"spr_fly","path":"sprites/spr_fly/spr_fly.yy",},"order":0,},
     {"id":{"name":"spr_mask_safezone","path":"sprites/spr_mask_safezone/spr_mask_safezone.yy",},"order":3,},
     {"id":{"name":"snap_from_csv","path":"scripts/snap_from_csv/snap_from_csv.yy",},"order":0,},
@@ -145,9 +147,9 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
-    {"roomId":{"name":"rm_cutscene","path":"rooms/rm_cutscene/rm_cutscene.yy",},},
     {"roomId":{"name":"rm_logo","path":"rooms/rm_logo/rm_logo.yy",},},
+    {"roomId":{"name":"rm_cutscene","path":"rooms/rm_cutscene/rm_cutscene.yy",},},
+    {"roomId":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Assets.yy","order":0,"resourceVersion":"1.0","name":"Assets","tags":[],"resourceType":"GMFolder",},
@@ -198,6 +200,7 @@
     {"folderPath":"folders/Assets/Utility/FAST/Core/System.yy","order":4,"resourceVersion":"1.0","name":"System","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Assets/Utility/FAST/Core/System/Fonts.yy","order":1,"resourceVersion":"1.0","name":"Fonts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Assets/Utility/FAST/Core/System/Sprites.yy","order":2,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Assets/Fonts.yy","order":6,"resourceVersion":"1.0","name":"Fonts","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -205,7 +208,9 @@
   "TextureGroups": [
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"save_data.txt","resourceType":"GMIncludedFile",},
+  ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",
   },

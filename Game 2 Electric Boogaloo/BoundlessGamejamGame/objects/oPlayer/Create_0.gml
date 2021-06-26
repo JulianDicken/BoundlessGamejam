@@ -5,6 +5,7 @@ camera = instance_create_depth(x,y,depth, oCamera)
 camera.target = id;
 
 time = new Timer();
+draw_set_font(press_start_2_play);
 
 velocity_x = 0;
 velocity_y = 0;
@@ -249,3 +250,17 @@ state.add(
 		}
 	}
 );
+
+if(global.do_load) {
+	var file = file_text_open_read("save_data.txt")
+	var encrypted_data = file_text_read_string(file);
+	file_text_close(file);
+	
+	var decrypted_data = base64_decode(encrypted_data);
+	syslog(decrypted_data);
+	var save_data = snap_from_json( decrypted_data );
+	x = save_data.X;
+	y = save_data.Y;
+	state.change( save_data.S );
+	time.__Start = -save_data.T;
+}

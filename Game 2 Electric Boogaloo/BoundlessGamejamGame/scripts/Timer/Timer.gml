@@ -33,12 +33,13 @@ function Timer() : __Struct__() constructor {
 	static toString	= function() {
 		var _passed	= elapsed() / 1000000;
 		
-		return string_from_time( _passed, __Format );
+		var _str = string_replace_all(string_from_time( _passed, __Format ), " ", "");
+		return string_replace_all(_str, ".", ":");
 		
 	}
 	/// @var {string}	The format string to use to display the elapsed time
 	/// @output "$S"
-	__Format	= ( argument_count > 0 ? argument[ 0 ] : "$S" );
+	__Format	= ( argument_count > 0 ? argument[ 0 ] : "$H . $M . $S.SS" );
 	/// @var {int} The time at which the timer was started
 	__Start		= get_timer();
 	
