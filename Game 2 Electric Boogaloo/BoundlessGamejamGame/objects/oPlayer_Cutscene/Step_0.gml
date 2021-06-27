@@ -8,5 +8,5 @@ if (camera.y > fade_trigger_y && !fade_trigger_y_once) {
 	instance_create_depth(0,0,-999, oFade)
 }
 if (camera.y > logo_trigger_y) {
-	room_goto(rm_logo)
+	room_goto(rm_main)
 }

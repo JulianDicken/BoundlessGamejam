@@ -7,6 +7,8 @@ camera.target = id;
 time = new Timer();
 draw_set_font(press_start_2_play);
 
+display_set_gui_size(512*2,288*2);
+
 velocity_x = 0;
 velocity_y = 0;
 last_velocity_x = 0;
@@ -14,7 +16,7 @@ last_velocity_y = 0;
 velocity_sign_x = 0;
 velocity_sign_y = 0;
 velocity_grapple = 4; 
-velocity_jump = 6;
+velocity_jump = 7;
 accelleration_gravity = 0.2;
 
 draw_xscale		= 1;
@@ -250,7 +252,7 @@ state.add(
 		}
 	}
 );
-
+/*
 if(global.do_load) {
 	var file = file_text_open_read("save_data.txt")
 	var encrypted_data = file_text_read_string(file);
@@ -264,3 +266,6 @@ if(global.do_load) {
 	state.change( save_data.S );
 	time.__Start = -save_data.T;
 }
+*/
+
+audio_play_sound(sfx_main_score, 1, true);

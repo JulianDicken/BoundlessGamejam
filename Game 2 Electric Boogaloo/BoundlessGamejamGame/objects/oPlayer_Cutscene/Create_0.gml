@@ -10,6 +10,7 @@ logo_trigger_y = 4000;
 camera = instance_create_depth(x,y,depth, oCamera)
 camera.target = id;
 
+display_set_gui_size(512,288);
 
 velocity_x = 0;
 velocity_y = 0;

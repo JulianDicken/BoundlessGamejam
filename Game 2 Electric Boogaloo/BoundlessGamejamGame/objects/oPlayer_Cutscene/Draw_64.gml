@@ -1,0 +1,1 @@
+draw_sprite(spr_blackbars,0,0,0);
